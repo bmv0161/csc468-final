@@ -1,6 +1,6 @@
-FROM python:alpine
-RUN pip install requests
-RUN pip install html5lib
-RUN pip install bs4
+FROM python:slim
+
+COPY requirements.txt /
+RUN pip install -r requirements.txt
 COPY WebScraper.py /
 CMD ["python", "WebScraper.py"]
