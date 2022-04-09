@@ -1,6 +1,8 @@
 import requests
 import json
 from bs4 import BeautifulSoup
+import pandas as pd
+import mysql.connector as db
 
 payload = {'range': '0', 'limit': '40'}
 url = 'https://ramconnect.wcupa.edu/mobile_ws/v17/mobile_events_list'
@@ -14,19 +16,23 @@ keys = data[0]['fields'].split(',')[:-1]
 for i in range(0, len(keys)):
     fields[keys[i]] = 'p'+str(i)
 
+events_dict = {'name':[], 'organizer': [], 'date': [], 'location': [], 'description': [] }
 
 for event in data:
     name = event[fields['eventName']]
-    print(name)
     if name != 'False':
-        print(event[fields['clubName']])
-        dateTag = event[fields['eventDates']]
-        soup = BeautifulSoup('<b>' + str(dateTag) + '</b>', 'html.parser')
+        events_dict['name'].append(name)
+        events_dict['organizer'].append(event[fields['clubName']])
+        soup = BeautifulSoup('<b>' + str(event[fields['eventDates']]) + '</b>', 'html.parser')
         date = ''
         for line in soup.findAll('p'):
             date += line.getText() + ' '
-        print(date)
-        print(event[fields['eventLocation']])
-        print(event[fields['ariaEventDetailsWithLocation']])
-        print()
+        events_dict['date'].append(date)
+        events_dict['location'].append(event[fields['eventLocation']])
+        events_dict['description'].append(event[fields['ariaEventDetailsWithLocation']])
+        
+df = pd.DataFrame.from_dict(events_dict)
+print(df.head(5))    
 
+cnx = db.connect(user='root', password='notpassword', host='',
+        database='events')
