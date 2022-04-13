@@ -1,6 +1,6 @@
 FROM python:slim
 
-COPY requirements.txt /
+COPY requirements.txt wait-for-it.sh /
 RUN pip install -r requirements.txt
 COPY WebScraper.py /
-CMD ["python", "WebScraper.py"]
+CMD ["./wait-for-it.sh", "mydb:3306", "--", "python", "WebScraper.py"]
