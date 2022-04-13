@@ -11,6 +11,7 @@ services:
                 image: mysql
                 environment:
                         MYSQL_ROOT_PASSWORD: notpassword
+                        MYSQL_DATABASE: campus
                 ports:
                         - "3306:3306"
                 volumes:

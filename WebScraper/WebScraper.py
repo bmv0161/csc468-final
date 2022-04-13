@@ -3,11 +3,12 @@ import json
 from bs4 import BeautifulSoup
 import pandas as pd
 import mysql.connector
+from sqlalchemy import types, create_engine
 
 #gets event data from site and exports to mysql server
 def scrape():
     #get data from website
-    payload = {'range': '0', 'limit': '40'}
+    payload = {'range': '0', 'limit': '80'}
     url = 'https://ramconnect.wcupa.edu/mobile_ws/v17/mobile_events_list'
     response = requests.get(url, params=payload)
     #create dictionary of fields to make accessing data easier
@@ -32,42 +33,32 @@ def scrape():
             events_dict['location'].append(event[fields['eventLocation']])
             events_dict['description'].append(event[fields['ariaEventDetailsWithLocation']])
 
-    export_data(events_dict)
+    df = pd.DataFrame.from_dict(events_dict)
+    init_db(df)
+    export_data(df)
 
 def export_data(data):
     #connect to mysql database
-    mydb = mysql.connector.connect(host='mydb', user='root', password='notpassword', database='campus')
-    cursor = mydb.cursor()
-    
-    placeholders = ', '.join(['%s'] * len(data))
-    colums = ', '.join(data.keys())
-    query = 'INSERT INTO events ( %s ) VALUES ( %s )'
+    engine = create_engine('mysql+mysqlconnector://root:notpassword@mydb:3306/campus')
+    data.to_sql(name='events', con=engine, if_exists='replace', index=False)
 
-    
-
-def init_db():
-    mydb = mysql.connector.connect(host='mydb', port='3306', user='root', password='notpassword')
-
-    cursor = mydb.cursor()
-    cursor.execute('DROP DATABASE IF EXISTS campus')
-    cursor.execute('CREATE DATABASE campus')
-    cursor.close()
-
+def init_db(data):
     mydb = mysql.connector.connect(host='mydb', port='3306', user='root', password='notpassword', database='campus')
-
+    query = '''CREATE TABLE events (
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            %s VARCHAR(255),
+            %s VARCHAR(255),
+            %s VARCHAR(255),
+            %s VARCHAR(255),
+            %s VARCHAR(255))''' % (tuple(data.columns))
     cursor = mydb.cursor()
     cursor.execute('DROP TABLE IF EXISTS events')
-    cursor.execute('CREATE TABLE events (id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255),
-            organizer VARCHAR(255),
-            date VARCHAR(255),
-            location VARCHAR(255),
-            description VARCHAR(255))')
+    cursor.execute(query)
     cursor.close()
+    mydb.close()
 
 print('init database')
 
-if __name__ == __main__:
+if __name__ == '__main__':
     scrape()
-    init_db()
 
