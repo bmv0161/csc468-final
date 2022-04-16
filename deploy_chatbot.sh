@@ -1,5 +1,7 @@
 #! /bin/bash
 
+kubectl create deployment registy --image=registry
+kubectel expose deploy/registry --port=30000 --type=NodePort
 
 docker-compose build
 docker-compose push

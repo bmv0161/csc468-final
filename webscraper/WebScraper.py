@@ -34,13 +34,13 @@ def scrape():
             events_dict['description'].append(event[fields['ariaEventDetailsWithLocation']])
 
     df = pd.DataFrame.from_dict(events_dict)
-    init_db(df)
+    #init_db(df)
     export_data(df)
 
 def export_data(data):
     #connect to mysql database
     engine = create_engine('mysql+mysqlconnector://root:notpassword@mydb:3306/campus')
-    data.to_sql(name='events', con=engine, if_exists='append', index=False)
+    data.to_sql(name='events', con=engine, if_exists='replace', index=False)
 
 def init_db(data):
     mydb = mysql.connector.connect(host='mydb', port='3306', user='root', password='notpassword', database='campus')
