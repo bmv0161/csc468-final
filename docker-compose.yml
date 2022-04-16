@@ -2,9 +2,12 @@ version: '3'
 
 services:
         webscraper:
-                build: ./WebScraper
+                build: webscraper
+                image: 127.0.0.1:30000/webscraper:0.1
                 ports:
-                        - 8000:5000
+                        - 8000:8000
+                depends_on:
+                        - "mydb"
         mydb:
                 restart: always
                 container_name: mydb
