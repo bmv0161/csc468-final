@@ -1,14 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
         name: webscraper
 spec:
-        replicas: 1
-        strategy: 
-                type: Recreate
-        selector: 
-                matchLabels:
-                        app: webscraper
         template:
                 metadata:
                         labels:
@@ -19,6 +13,7 @@ spec:
                                   image: 127.0.0.1:30000/webscraper:0.1
                                   ports:
                                           - containerPort: 5000
+                        restartPolicy: OnFailure
 ---
 apiVersion: apps/v1
 kind: Deployment
