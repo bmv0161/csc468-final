@@ -1,28 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-        name: webscraper
-spec:
-        replicas: 1
-        strategy: 
-                type: Recreate
-        selector: 
-                matchLabels:
-                        app: webscraper
-        template:
-                metadata:
-                        labels:
-                                app: webscraper
-                spec:
-                        containers:
-                                - name: webscraper
-                                  image: 127.0.0.1:30000/webscraper:0.1
-                                  ports:
-                                          - containerPort: 5000
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
         name: mydb
 spec:
         replicas: 1
@@ -46,7 +24,7 @@ spec:
                                                     name: mysql-secret
                                                     key: password
                                           - name: MYSQL_DATABASE
-                                            value: campus
+                                            value: events
                                   ports:
                                           - containerPort: 3306
                                   volumeMounts:
@@ -56,3 +34,15 @@ spec:
                                 - name: mysql-persistent-storage
                                   persistentVolumeClaim:
                                           claimName: mysql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+        name: mydb
+spec:
+        ports:
+                - port: 3306
+                  protocol: TCP
+        selector:
+                app: mydb
+        clusterIP: None
