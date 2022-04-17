@@ -45,4 +45,3 @@ spec:
                   protocol: TCP
         selector:
                 app: mydb
-        clusterIP: None
