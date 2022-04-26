@@ -1,7 +1,7 @@
 version: '3'
 services:
     rasa:
-      container_name: "rasa_server"
+      container_name: "chatbot_rasa"
       user: root
       build: 
         context:  .
@@ -9,8 +9,8 @@ services:
       - "./:/app"
       ports: 
         - "5005:5005"
-    action_server:
-      container_name: "action_server"
+    chatbot_actions:
+      container_name: "chatbot_actions"
       build: 
         context: actions
       volumes:
