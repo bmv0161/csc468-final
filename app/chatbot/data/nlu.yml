@@ -17,24 +17,22 @@ nlu:
     - goodevening
     - good afternoon
 
-- intent: inform
-  examples: |
-          - I am [Brian](name)
-          - My name is [Dom](name)
-          - I am a [Senior](class)
-
 - intent: search_events_general
   examples: |
-          - Any events [this week](date)
-          - What's going on [tomorrow](date)
-          - What are some upcoming events
-          - Are there any events in [May](date)
-          
-- intent: search_event_details
-  examples: |
-          - Where is the [career fair](event)
-          - When is the [soccer game](event)
-          - What time is the [graduation ceremony](event)
+          - any events [this week](date)
+          - whats going on [tomorrow](date)
+          - what are some upcoming events
+          - are there any events in [May](date)
+          - any events on campus
+          - what are some events
+          - can i get a list of events
+          - tell me what events there are
+          - whats happening on campus
+          - what is there to do
+          - what can i do on campus
+          - what is happening [next week](date)
+          - is there any events on [wednesday](date)  
+          - campus events
 
 - intent: goodbye
   examples: |

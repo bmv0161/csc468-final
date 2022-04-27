@@ -1,4 +1,4 @@
-FROM rasa/rasa
+FROM rasa/rasa:main-spacy-en
 WORKDIR '/app'
 COPY . /app
 USER root
