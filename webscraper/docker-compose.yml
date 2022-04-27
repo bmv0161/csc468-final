@@ -7,19 +7,3 @@ services:
                 ports:
                         - 8000:5000
                           
-        mydb:
-                restart: always
-                container_name: mydb
-                image: mysql
-                environment:
-                        MYSQL_ROOT_PASSWORD: notpassword
-                        MYSQL_ROOT_HOST: '%'
-                        MYSQL_DATABASE: campus
-                ports:
-                        - "3308:3306"
-                volumes:
-                        - mysql:/var/lib/mysql
-                        - mysql_config:/etc/mysql
-volumes:
-        mysql:
-        mysql_config: 
