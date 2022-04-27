@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+#Nginx Service
+        webui:
+                build: webui
+                container_name: webui
+                restart: unless-stopped
+                ports:
+                        - "80:80"
+                        - "443:443"
+
+
         webscraper:
                 build: webscraper
                 image: 127.0.0.1:30000/webscraper:0.1
