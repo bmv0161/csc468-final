@@ -26,13 +26,11 @@ pipeline {
             }
             steps {
                 sshagent(credentials: ['cloudlab']) {
-                    sh "sed -i 's/DOCKER_REGISTRY/${docker_user}/g' mydb.yaml"
-                    sh "sed -i 's/BUILD_NUMBER/${BUILD_NUMBER}/g' mydb.yaml"
-                    sh 'scp -r -v -o StrictHostKeyChecking=no *.yaml lngo@130.127.132.231:~/'
-                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.231 kubectl apply -f /users/lngo/mydb.yaml -n jenkins'
-                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.231 kubectl apply -f /users/lngo/mysql-secret.yaml -n jenkins'
-                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.231 kubectl apply -f /users/lngo/mysql-storage.yaml -n jenkins'                                        
-
+                    sh "sed -i 's/DOCKER_REGISTRY/${docker_user}/g' database.yaml"
+                    sh "sed -i 's/BUILD_NUMBER/${BUILD_NUMBER}/g' database.yaml"
+                    sh 'scp -r -v -o StrictHostKeyChecking=no *.yaml dp963106@130.127.132.231:~/'
+                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.231 kubectl apply -f /users/dp963106/database.yaml -n jenkins'
+                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.231 kubectl apply -f /users/dp963106/database_services.yaml -n jenkins'
                 }
             }
         }
