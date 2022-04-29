@@ -17,12 +17,14 @@ nlu:
     - goodevening
     - good afternoon
 
-- intent: search_events_general
+- intent: event_search
   examples: |
-          - any events [this week](date)
-          - whats going on [tomorrow](date)
+          - can you help me find an event
+          - what are some events on campus
+          - i need help finding events 
+          - any events this week
           - what are some upcoming events
-          - are there any events in [May](date)
+          - are there any events
           - any events on campus
           - what are some events
           - can i get a list of events
@@ -30,8 +32,8 @@ nlu:
           - whats happening on campus
           - what is there to do
           - what can i do on campus
-          - what is happening [next week](date)
-          - is there any events on [wednesday](date)  
+          - what is happening next week
+          - is there any events
           - campus events
 
 - intent: goodbye

@@ -2,14 +2,13 @@ version: "3.1"
 
 stories:
 
-- story: search events happy path
+- story: event search
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: search_events_general
-  - action: utter_search_events_general
-  - intent: search_event_details
-  - action: utter_search_event_details
+  - intent: event_search
+  - action: action_event_search
+
         
 - story: happy path
   steps:

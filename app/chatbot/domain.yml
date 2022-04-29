@@ -9,13 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge
   - inform
-  - search_events_general
-  - search_event_details
-
-entities:
-  - name
-  - class
-  - event
+  - event_search
 
 responses:
   utter_greet:
@@ -37,11 +31,11 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
   
-  utter_search_events_general:
-  - text: "Here is a list of upcoming events:"
+  utter_event_search:
+  - text: "Here are some upcoming events:"
 
-  utter_search_event_details:
-  - text: "That event is at 3:30 PM"
+actions:
+  - action_event_search
 
 session_config:
   session_expiration_time: 60
