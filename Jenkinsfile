@@ -11,7 +11,7 @@ pipeline {
                 sshagent(credentials: ['cloudlab']) {
                     sh 'scp -r -v -o StrictHostKeyChecking=no *.yaml dp963106@130.127.132.207:~/'
                     sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.207 kubectl apply -f /users/dp963106/webscraper.yaml -n jenkins'
-                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.207 kubectl apply -f /users/dp963106/webscraper-services.yaml -n jenkins'
+                    sh 'ssh -o StrictHostKeyChecking=no dp963106@130.127.132.207 kubectl apply -f /users/dp963106/webscraper_services.yaml -n jenkins'
 
                 }
             }
