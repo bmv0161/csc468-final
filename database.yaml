@@ -1,3 +1,46 @@
+apiVersion: v1
+kind: Secret
+metadata:
+        name: mysql-secret
+type: kubernetes.io/basic-auth
+stringData:
+        password: notpassword
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+        name: mysql-sc
+provisioner: kubernetes.io/gce-pd
+parameters:
+        type: pd-standard
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+        name: mysql-pv
+        labels:
+                type: local
+spec:
+        storageClassName: mysql-sc
+        capacity:
+                storage: 20Gi
+        accessModes:
+                - ReadWriteOnce
+        hostPath:
+                path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+        name: mysql-pvc
+spec:
+        accessModes:
+                - ReadWriteOnce
+        storageClassName: mysql-sc
+        resources:
+                requests:
+                        storage: 20Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,3 +77,4 @@ spec:
                                 - name: mysql-persistent-storage
                                   persistentVolumeClaim:
                                           claimName: mysql-pvc
+
