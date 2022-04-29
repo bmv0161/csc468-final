@@ -10,6 +10,14 @@ intents:
   - bot_challenge
   - inform
   - event_search
+  - event_query
+
+entities:
+  - event
+
+slots:
+  event:
+    type: text
 
 responses:
   utter_greet:
@@ -36,6 +44,7 @@ responses:
 
 actions:
   - action_event_search
+  - action_event_query
 
 session_config:
   session_expiration_time: 60

@@ -9,7 +9,20 @@ stories:
   - intent: event_search
   - action: action_event_search
 
-        
+- story: event search query
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: event_search
+  - action: action_event_search
+  - intent: event_query
+  - action: action_event_query
+
+- story: event query
+  steps: 
+  - intent: event_query
+  - action: action_event_query
+  
 - story: happy path
   steps:
   - intent: greet

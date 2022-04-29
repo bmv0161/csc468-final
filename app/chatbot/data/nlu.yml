@@ -36,6 +36,17 @@ nlu:
           - is there any events
           - campus events
 
+- intent: event_query
+  examples: |
+          - tell me more about [serpentine executive meeting](event)
+          - what is [morning meditation](event)
+          - is there [covid testing](event)
+          - whens [game night](event)
+          - what do you know about [mindful coloring](event)
+          - [music therapy club general meeting](event) sounds interesting
+          - i would like to know more about [political science association aeeting](event)
+          - [astronomy club weekly meeting] sounds fun
+
 - intent: goodbye
   examples: |
     - cu

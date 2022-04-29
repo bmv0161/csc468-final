@@ -1,9 +1,9 @@
 FROM rasa/rasa-sdk
 
 WORKDIR /app
-#COPY requirements.txt requirements.txt
+COPY requirements.txt .
 USER root
-#RUN pip install --verbose -r requirements.txt
+RUN pip install --verbose -r requirements.txt
 COPY . ./actions
 
 EXPOSE 5055
