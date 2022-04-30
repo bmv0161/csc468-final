@@ -46,6 +46,12 @@ nlu:
           - [music therapy club general meeting](event) sounds interesting
           - i would like to know more about [political science association aeeting](event)
           - [astronomy club weekly meeting](event) sounds fun
+          - could you tell me more about [occa final general assemby meeting](event)
+          - tell me about [sensitive guided meditation](event)
+          - i need to know more about [speed bingo](event)
+          - tell me more about [autism acceptance month student panel](event)
+          - when is the [creative writing club meeting](event)
+          - can i learn more about the [model un meeting](event)
 
 - intent: goodbye
   examples: |

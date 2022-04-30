@@ -1,0 +1,47 @@
+version: "3.1"
+stories:
+- story: event query 2 (./tests/test_stories.yml)
+  steps:
+  - intent: event_query  # predicted: event_query: tell me about pinterest hour
+    entities: []
+  - slot_was_set:
+    - event: pinterest hour
+  - action: action_event_query
+- story: event query 3 (./tests/test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: event_search
+  - action: action_event_search
+  - intent: event_query  # predicted: event_search: what is destress [coloring](event)
+    entities: []
+  - slot_was_set:
+    - event: destress coloring
+  - action: action_event_query
+- story: event query 5 (./tests/test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: event_query
+    entities:
+    - event: annual wazobia gala
+  - slot_was_set:
+    - event: annual wazobia gala
+  - action: action_event_query  # predicted: action_unlikely_intent
+- story: event query 6 (./tests/test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: event_query  # predicted: event_query: when is spanish [club meeting](event)
+    entities: []
+  - slot_was_set:
+    - event: spanish club meeting
+  - action: action_event_query  # predicted: action_unlikely_intent
+  - intent: event_search
+  - action: action_event_search  # predicted: action_unlikely_intent
+  - intent: event_query
+    entities:
+    - event: game night
+  - slot_was_set:
+    - event: game night
+  - action: action_event_query

@@ -2,90 +2,80 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: happy path 1
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-
-- story: happy path 2
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: sad path 1
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
-
-- story: sad path 3
+- story: event query 1
   steps:
   - user: |
       hi
     intent: greet
   - action: utter_greet
   - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+      i need help finding events
+    intent: event_search
+  - action: action_event_search
   - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
+      tell me more about [serpentine executive meeting]{"entity": "event"}
+    intent: event_query
+  - action: action_event_query
 
-- story: say goodbye
+- story: event query 2
   steps:
   - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+      tell me about [pinterest hour]{"entity": "event"}
+    intent: event_query
+  - action: action_event_query
 
-- story: bot challenge
+- story: event query 3
   steps:
   - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+      howdy
+    intent: greet
+  - action: utter_greet
+  - user: |
+      tell me about campus events
+    intent: event_search
+  - action: action_event_search
+  - user: |
+      what is [destress coloring]{"entity": "event"}
+    intent: event_query
+  - action: action_event_query
+
+- story: event query 4
+  steps:
+  - user: |
+      any campus events
+    intent: event_search
+  - action: action_event_search
+  - user: |
+      is there [covid19 testing]{"entity": "event"}
+    intent: event_query
+  - action: action_event_query
+
+- story: event query 5
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      can you tell me more about [annual wazobia gala]{"entity": "event"}
+    intent: event_query
+  - action: action_event_query
+
+- story: event query 6
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      when is [spanish club meeting]{"entity": "event"}
+    intent: event_query
+  - action: action_event_query
+  - user: |
+      what are some events
+    intent: event_search
+  - action: action_event_search
+  - user: |
+      [game night]{"entity": "event"} sounds like fun
+    intent: event_query
+  - action: action_event_query
