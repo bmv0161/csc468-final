@@ -2,52 +2,52 @@ version: "3.1"
 nlu:
   - lookup: event  
     examples: |
-      - Buy Your 2022 Yearbook and Ads!
-      - Serpentine Executive Meeting
-      - Morning Meditation 
-      - 30 Days of Hope
-      - Time to buy your ad to be featured in the 2022 Serpentine yearbook!
-      - COVID-19 Testing
-      - Student Leadership Summit Celebration
-      - Pinterest Hour
-      - Autism Acceptance Month Student Panel
-      - De-Stress Coloring
-      - Serpentine Open Lab
-      - Art Club Spring Formal
-      - Serpentine Staff Meeting
-      - University Theatre Banquet
-      - WCUR Block Party
-      - Pinterest Night
-      - Annual Wazobia Gala 
-      - Therapy Dogs at the FHG Library 
-      - Decisions about Drinking Workshop
-      - Last Photography meeting of the semester 
-      - Shamaine Daniels
-      - Philosophy Club Meeting
-      - Economics & Finance Meeting
-      - WiCS final meeting
-      - Voice Your Values Workshop 
-      - Student Leadership Awards
-      - Oceanography Club Meeting
-      - Spanish Club Meeting
-      - OCCA Final General Assembly Meeting!
-      - Mindful Coloring
-      - Creative Writing Club Meeting
-      - Game Night
-      - LSA Meeting!
-      - Astronomy Club Weekly Meeting!
-      - NCTE Meeting May 4th 2022
-      - Music Therapy Club General Meeting
-      - Pack Your Own Mental Health Themed RamBox! 
-      - CTQA's Lavender Graduation
-      - Political Science Association Meeting
-      - Model U.N. Meeting
-      - Sensitive Guided Meditation 
-      - Sensitive Guided Meditation
-      - Weekly Meeting
-      - Transfer Student Association Meeting (Game Night[s])
-      - Speed Bingo
-      - DOSA First Fridays
-      - SGA Senator Elections
-      - French Trip 
-      - WCU Color War 2022
+      - buy your 2022 yearbook and ads
+      - serpentine executive meeting
+      - morning meditation 
+      - 30 days of hope
+      - time to buy your ad to be featured in the 2022 serpentine yearbook
+      - covid19 testing
+      - student leadership summit celebration
+      - pinterest hour
+      - autism acceptance month student panel
+      - destress coloring
+      - serpentine open lab
+      - art club spring formal
+      - serpentine staff meeting
+      - university theatre banquet
+      - wcur block party
+      - pinterest night
+      - annual wazobia gala 
+      - therapy dogs at the fhg library 
+      - decisions about drinking workshop
+      - last photography meeting of the semester 
+      - shamaine daniels
+      - philosophy club meeting
+      - economics  finance meeting
+      - wics final meeting
+      - voice your values workshop 
+      - student leadership awards
+      - oceanography club meeting
+      - spanish club meeting
+      - occa final general assembly meeting
+      - mindful coloring
+      - creative writing club meeting
+      - game night
+      - lsa meeting
+      - astronomy club weekly meeting
+      - ncte meeting may 4th 2022
+      - music therapy club general meeting
+      - pack your own mental health themed rambox 
+      - ctqas lavender graduation
+      - political science association meeting
+      - model un meeting
+      - sensitive guided meditation 
+      - sensitive guided meditation
+      - weekly meeting
+      - transfer student association meeting game nights
+      - speed bingo
+      - dosa first fridays
+      - sga senator elections
+      - french trip 
+      - wcu color war 2022

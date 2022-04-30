@@ -1,5 +1,5 @@
 import mysql.connector
-import time
+import re
 
 def main():
     mydb = mysql.connector.connect(host='mydb', port='3306', user='root', password='notpassword', database='campus', auth_plugin='mysql_native_password')
@@ -11,7 +11,9 @@ def main():
     temp = []
 
     for event in cursor:
-        event = str(event)[2:-3]
+        event = str(event)
+        event = event.lower()
+        event = re.sub(r'[^\w\s]', '', event)
         if event not in temp:
             temp.append(event)
             f.write('      - ' + event + '\n')

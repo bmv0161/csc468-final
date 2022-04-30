@@ -18,6 +18,9 @@ entities:
 slots:
   event:
     type: text
+    mappings:
+    - type: from_entity
+      entity: event
 
 responses:
   utter_greet:
