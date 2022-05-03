@@ -18,21 +18,44 @@
   </head>
   <body>
     <div id="webchat"></div> 
-<script src="https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.min.js"></script>
- 
+    <div id="rasa-chat-widget" data-websocket-url="http://chatbot_rasa:5005/"></div>
+    <script src="https://unpkg.com/@rasahq/rasa-chat" type="application/javascript"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.min.js"></script>
 <script>   
 WebChat.default.init({     
 selector: "#webchat",     
 initPayload: "/get_started",     
 customData: {"language": "en"}, // arbitrary custom data. Stay minimal as this will be added to the socket     
-socketUrl: "http://localhost:5500",     
+socketUrl: "http://chatbot_rasa:5005",     
 socketPath: "/socket.io/",     
 title: "Title",     
 subtitle: "Subtitle",     
 params: {"storage": "session"} // can be set to "local"  or "session". details in storage section.   
 }) 
-
 </script>
+
+    <script>!(function () {
+  let e = document.createElement("script"),
+    t = document.head || document.getElementsByTagName("head")[0];
+  (e.src =
+    "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+    // Replace 1.x.x with the version that you want
+    (e.async = !0),
+    (e.onload = () => {
+      window.WebChat.default(
+        {
+          customData: { language: "en" },
+          socketUrl: "http://chatbot_rasa:5005",
+		socketPath: "/socket.io/"
+          // add other props here
+        },
+        null
+      );
+    }),
+    t.insertBefore(e, t.firstChild);
+})();
+</script>
+-->
     <!-- Navbar Section -->
     <nav class="navbar">
       <div class="navbar__container">

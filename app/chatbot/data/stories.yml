@@ -22,7 +22,14 @@ stories:
   steps: 
   - intent: event_query
   - action: action_event_query
-  
+
+- story: greet query
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: event_query
+  - action: action_event_query
+
 - story: happy path
   steps:
   - intent: greet
