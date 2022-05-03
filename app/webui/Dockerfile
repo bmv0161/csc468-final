@@ -1,2 +1,4 @@
 FROM nginx:latest
-COPY . /usr/share/nginx/html/.
+COPY content/. /etc/nginx/usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d
+COPY nginx.conf /etc/nginx
