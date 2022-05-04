@@ -55,22 +55,38 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-        name: chatbot
+        name: chatbot-rasa
 spec:
         replicas: 1
         selector:
                 matchLabels:
-                        app: chatbot
+                        app: chatbot-rasa
         template:
                 metadata:
                         labels:
-                                app: chatbot
+                                app: chatbot-rasa
                 spec:
                         containers:
                                 - name: chatbot-rasa
                                   image: 127.0.0.1:30000/chatbot-rasa:0.1
                                   ports:
                                           - containerPort: 5005
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: chatbot-actions
+spec:
+        replicas: 1
+        selector:
+                matchLabels:
+                        app: chatbot-actions
+        template:
+                metadata:
+                        labels:
+                                app: chatbot-actions
+                spec:
+                        containers:
                                 - name: chatbot-actions
                                   image: 127.0.0.1:30000/chatbot-actions:0.1
                                   ports:
