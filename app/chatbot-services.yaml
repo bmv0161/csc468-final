@@ -24,9 +24,9 @@ metadata:
         name: chatbot
 spec:
         ports:
-                - name: chatbot-rasa
+                - name: rasa
                   protocol: TCP
                   port: 5005
-                - name: chatbot-actions
+                - name: actions
                   protocol: TCP
                   port: 5055
