@@ -17,3 +17,16 @@ spec:
                   protocol: TCP
         selector:
                 app: mydb
+---
+apiVersion: v1
+kind: Service
+metadata:
+        name: chatbot
+spec:
+        ports:
+                - name: chatbot-rasa
+                  protocol: TCP
+                  port: 5005
+                - name: chatbot-actions
+                  protocol: TCP
+                  port: 5055

@@ -1,38 +1,3 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-        name: rasa-sc
-provisioner: kubernetes.io/gce-pd
-parameters:
-        type: pd-standard
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-        name: rasa-pv
-        labels:
-                type: local
-spec:
-        storageClassName: rasa-sc
-        capacity:
-                storage: 20Gi
-        accessModes:
-                - ReadWriteOnce
-        hostPath:
-                path: "/mnt/data"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-        name: rasa-pvc
-spec:
-        accessModes:
-                - ReadWriteOnce
-        storageClassName: rasa-sc
-        resources:
-                requests:
-                        storage: 20Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -47,23 +12,12 @@ spec:
                         labels:
                                 app: chatbot
                 spec:
-                        volumes:
-                                - name: rasa-storage
-                                  persistentVolumeClaim:
-                                          claimName: rasa-pvc
                         containers:
-                                - name: "chatbot_rasa"
-                                  image: 127.0.0.1:chatbot_rasa:0.1
+                                - name: chatbot-rasa
+                                  image: 127.0.0.1:chatbot-rasa:0.1
                                   ports:
                                           - containerPort: 5005
-                                  volumeMounts:
-                                          - name: rasa-pvc
-                                            mountPath: /app
-                                - name: "chatbot_actions"
-                                  image: 127.0.0.1:chatbot_actions:0.1
+                                - name: chatbot-actions
+                                  image: 127.0.0.1:chatbot-actions:0.1
                                   ports:
                                           - containerPort: 5055
-                                  volumeMounts:
-                                          - name: rasa-pvc
-                                            mountPath: /app/actions
-

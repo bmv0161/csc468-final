@@ -14,19 +14,19 @@ services:
                         - "443:443"
 #chatbot
         rasa:
-                container_name: chatbot_rasa
+                container_name: chatbot-rasa
                 user: root
                 build: chatbot
-                image: 127.0.0.1:30000/chatbot_rasa:0.1
+                image: 127.0.0.1:30000/chatbot-rasa:0.1
                 volumes:
                         - ./chatbot/:/app
                 ports:
                         - "5005:5005"
         actions:
-                container_name: chatbot_actions
+                container_name: chatbot-actions
                 build:
                         context: chatbot/actions
-                image: 127.0.0.1:30000/chatbot_actions:0.1
+                image: 127.0.0.1:30000/chatbot-actions:0.1
                 volumes:
                         - ./chatbot/actions:/app/actions
                         - ./chatbot/data:/app/data
