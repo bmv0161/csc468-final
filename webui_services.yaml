@@ -7,6 +7,6 @@ spec:
         ports:
                 - port: 80
                   targetPort: 80
-                  nodePort: 50088
+                  nodePort: 40088
         selector:
                 app: webui
