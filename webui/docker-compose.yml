@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+        webui:
+                build: nginx
+                image: 127.0.0.1:35000/webui:0.1
+                container_name: webui
+                volumes:
+                        - ./webui/logs:/var/logs
+                restart: unless-stopped
+                ports:
+                        - "80:80"
+                        - "443:443"
