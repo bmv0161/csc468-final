@@ -4,7 +4,7 @@ services:
 #webui
         webui:
                 build: webui
-                image: 127.0.0.1:30000/webui:0.1
+                image: 127.0.0.1:35000/webui:0.1
                 container_name: webui
                 volumes:
                         - ./webui/logs:/var/logs
@@ -17,7 +17,7 @@ services:
                 container_name: chatbot-rasa
                 user: root
                 build: chatbot
-                image: 127.0.0.1:30000/chatbot-rasa:0.1
+                image: 127.0.0.1:35000/chatbot-rasa:0.1
                 volumes:
                         - ./chatbot/:/app
                 ports:
@@ -26,7 +26,7 @@ services:
                 container_name: chatbot-actions
                 build:
                         context: chatbot/actions
-                image: 127.0.0.1:30000/chatbot-actions:0.1
+                image: 127.0.0.1:35000/chatbot-actions:0.1
                 volumes:
                         - ./chatbot/actions:/app/actions
                         - ./chatbot/data:/app/data
@@ -35,7 +35,7 @@ services:
 #webscraper
         webscraper:
                 build: webscraper
-                image: 127.0.0.1:30000/webscraper:0.1
+                image: 127.0.0.1:35000/webscraper:0.1
                 ports:
                         - "8000:5000"
 #database               
