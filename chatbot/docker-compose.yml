@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+        rasa:
+                container_name: chatbot-rasa
+                user: root
+                build: app
+                image: 127.0.0.1:35000/chatbot-rasa:0.3
+                volumes:
+                        - ./app/:/app
+                ports:
+                        - "5005:5005"
+        actions:
+                container_name: chatbot-actions
+                build:
+                        context: app/actions
+                image: 127.0.0.1:35000/chatbot-actions:0.1
+                volumes:
+                        - ./app/actions:/app/actions
+                        - ./app/data:/app/data
+                ports:
+                        - "5055:5055"

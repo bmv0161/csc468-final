@@ -1,20 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chatbot
+        name: chatbot
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: chatbot
-  template:
-    metadata:
-      labels:
-        app: chatbot
-    spec:
-      containers:
-      - name: chatbot
-        image: DOCKER_REGISTRY/hasher:BUILD_NUMBER
-        ports:
-          - name: http-port
-            containerPort: 80
+        replicas: 1
+        selector:
+                matchLabels:
+                        app: chatbot
+        template:
+                metadata:
+                        labels:
+                                app: chatbot
+                spec:
+                        containers:
+                                - name: chatbot-rasa
+                                  image: 127.0.0.1:35000/chatbot-rasa:0.3
+                                  ports:
+                                          - containerPort: 5005
+                                - name: chatbot-actions
+                                  image: 127.0.0.1:35000/chatbot-actions:0.1
+                                  ports:
+                                          - containerPort: 5055
